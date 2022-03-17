@@ -11,6 +11,8 @@ class ML:
             text = text.replace(specialChar, '')
         return text
     
+    def transform(self, vect, data):
+        return vect.transform(data)
      
     def predict_news(self, clf, vect, x_test):
         """
@@ -39,6 +41,8 @@ def news_classifier():
         text = request.form['usertext']
         clf = joblib.load("model.pkl")
         vect = joblib.load("vect.pkl")
+        
+        
         mlObj = ML()
         news_class = mlObj.predict_news(clf, vect, [text])
 
